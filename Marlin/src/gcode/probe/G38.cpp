@@ -51,7 +51,7 @@ inline bool G38_run_probe() {
     xyz_float_t retract_mm;
     LOOP_NUM_AXES(i) {
       const float dist = destination[i] - current_position[i];
-      retract_mm[i] = ABS(dist) < G38_MINIMUM_MOVE ? 0 : home_bump_mm((AxisEnum)i) * (dist > 0 ? -1 : 1);
+      retract_mm[i] = ABS(dist) < G38_MINIMUM_MOVE ? 0 : probe_bump_mm((AxisEnum)i) * (dist > 0 ? -1 : 1);
     }
   #endif
 
